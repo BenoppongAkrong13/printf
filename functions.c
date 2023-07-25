@@ -116,7 +116,7 @@ int print_int(va_list types, char buffer[],
 	long int a = va_arg(types, long int);
 	unsigned long int num;
 
-	a = convert_size_number(n, size);
+	a = convert_size_number(a, size);
 
 	if (a == 0)
 		buffer[b--] = '0';
@@ -138,7 +138,7 @@ int print_int(va_list types, char buffer[],
 
 	b++;
 
-	return (write_number(is_negative, i, buffer, flags, width, precision, size));
+	return (write_number(is_negative, b, buffer, flags, width, precision, size));
 }
 
 /************************* PRINT BINARY *************************/
@@ -167,7 +167,7 @@ int print_binary(va_list types, char buffer[],
 
 	a = va_arg(types, unsigned int);
 	e = 2147483648; /* (2 ^ 31) */
-	d[0] = n / m;
+	d[0] = a / e;
 	for (b = 1; b < 32; b++)
 	{
 		e /= 2;
